@@ -5,6 +5,9 @@
     "jest": "*",
     "joi": "*"
   },
+  "scripts": {
+    "tests": "jest"
+  },
   "devDependencies": {
     "@faker-js/faker": "^7.5.0"
   }
