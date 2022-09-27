@@ -1,14 +1,8 @@
 const frisby = require('frisby');
 const Joi = frisby.Joi;
 const path = require('path');
+const login = require('../_login');
 require('dotenv').config();
-
-const login = (email, password) => {
-    return frisby.post(process.env.API_URL + '/auth/login', {
-        email: email,
-        password: password
-    })
-};
 
 it('List sauces with anonymous user', async () => {
     return await frisby.get(process.env.API_URL + '/sauces')
@@ -41,28 +35,5 @@ it('List sauces with anonymous with user', async () => {
            usersLiked : Joi.array(),
            usersDisliked : Joi.array(),
            __v: Joi.number()
-        })
-})
-
-it('Create sauce', async () => {
-    await login('toto1@yopmail.com', 'sdsd')
-        .then(data => {
-
-            const imagePath = path.resolve(__dirname, './../../fixtures/files/18424726.jpg');
-
-            let formData = frisby.formData();
-            formData.append('imageUrl', imagePath)
-            formData.append('name', 'sdsd');
-            formData.append('manufacturer', 'sqdsqdsq');
-            formData.append('description', 'qss');
-            formData.append('mainPepper', 'qsdsqd');
-            formData.append('heat',  3);
-
-            frisby.fetch(process.env.API_URL + '/sauces', {
-                method: 'POST',
-                'Authorization': "Bearer: " + data.json.token,
-                'Content-type': "application/x-www-form-urlencoded",
-                body: formData
-            }).expect('status', 201)
         })
 })
