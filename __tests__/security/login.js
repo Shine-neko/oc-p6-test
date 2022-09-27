@@ -3,11 +3,18 @@ const Joi = frisby.Joi;
 require('dotenv').config();
 
 it('login success ', () => {
+    frisby.post(process.env.API_URL + '/auth/signup', {
+        email: "toto1@yopmail.com",
+        password: "sdsd"
+    });
 
     return frisby.post(process.env.API_URL + '/auth/login', {
         email: "toto1@yopmail.com",
         password: "sdsd"
-    }).inspectJSON().expect('status', 200)
+    })
+        .expect('status', 200)
+        .expect('jsonTypes', 'userId', Joi.string())
+        .expect('jsonTypes', 'token', Joi.string());
 });
 
 it('Login failed', () => {
