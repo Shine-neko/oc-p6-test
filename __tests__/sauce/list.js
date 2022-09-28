@@ -9,7 +9,7 @@ it('List sauces with anonymous user', async () => {
         .expect('status', 401);
 })
 
-it('List sauces with anonymous with user', async () => {
+it('List sauces with user', async () => {
     const data = await login("toto1@yopmail.com", 'sdsd')
 
     await frisby.fetch(process.env.API_URL + '/sauces', {

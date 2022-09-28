@@ -1,5 +1,7 @@
 const frisby = require('frisby');
 
+require('dotenv').config();
+
 let random = (Math.random() + 1).toString(36).substring(7);
 
 it('Register success ', function () {

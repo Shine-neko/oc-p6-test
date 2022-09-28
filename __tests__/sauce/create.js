@@ -31,11 +31,12 @@ it('Create sauce with empty body', async () => {
                 'Authorization': "Bearer: " + data.json.token,
                 'Content-type': "application/x-www-form-urlencoded",
                 body: formData
-            }).expect('status', 400)
+            })
+                .expect('status', 400)
         })
 })
 
-it('Create sauce', async () => {
+it.only('Create sauce', async () => {
     login('toto1@yopmail.com', 'sdsd')
         .then(data => {
 
