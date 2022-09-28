@@ -1,6 +1,7 @@
 const frisby = require('frisby');
 const path = require('path');
-const login = require('../_login');
+const fs = require('fs');
+const login = require('../../hooks/login');
 require('dotenv').config();
 
 it('Create sauce with user token', async () => {
