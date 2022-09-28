@@ -1,6 +1,7 @@
 const login = require('../../hooks/login');
 const sauce_hook = require('../../hooks/sauce');
 const frisby = require('frisby');
+require('dotenv').config();
 
 const random_string = () => {
     return (Math.random() + 1).toString(36).substring(7);
