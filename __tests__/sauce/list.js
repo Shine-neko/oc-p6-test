@@ -1,7 +1,6 @@
 const frisby = require('frisby');
 const Joi = frisby.Joi;
-const path = require('path');
-const login = require('../_login');
+const login = require('../../hooks/login');
 require('dotenv').config();
 
 it('List sauces with anonymous user', async () => {
